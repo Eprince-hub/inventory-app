@@ -52,3 +52,8 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+
+# Node.js related files and folders - After tailwind
+node_modules
+InventoryApp.UI/*/css/app.min.css
