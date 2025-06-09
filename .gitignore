@@ -57,3 +57,6 @@ nunit-*.xml
 # Node.js related files and folders - After tailwind
 node_modules
 InventoryApp.UI/*/css/app.min.css
+
+# Temporary addition to be removed
+README.md
