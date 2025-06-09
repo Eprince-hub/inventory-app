@@ -2,7 +2,7 @@
 using InventoryApp.Shared;
 
 // Todo: Maybe not necessary as ProductService class can supplement
-interface IProductService
+public interface IProductService
 {
   List<Product> GetProducts();
   Product? GetProduct(int productId);
