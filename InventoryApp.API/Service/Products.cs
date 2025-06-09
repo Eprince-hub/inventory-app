@@ -9,7 +9,7 @@ public interface IProductService
 
   Product AddProduct(Product product);
 
-  Product UpdateProduct(Product product);
+  Product UpdateProduct(Product product, int productId);
 
   Product DeleteProduct(int productId);
 }
@@ -35,9 +35,9 @@ class ProductService : IProductService
     return _products;
   }
 
-  public Product UpdateProduct(Product product)
+  public Product UpdateProduct(Product product, int productId)
   {
-    var existingProduct = GetProduct(product.Id);
+    var existingProduct = GetProduct(productId);
     if (existingProduct == null)
     {
       throw new KeyNotFoundException($"Product with ID {product.Id} not found.");
