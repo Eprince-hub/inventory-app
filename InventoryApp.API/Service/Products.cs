@@ -1,0 +1,68 @@
+
+using InventoryApp.Shared;
+
+// Todo: Maybe not necessary as ProductService class can supplement
+public interface IProductService
+{
+  List<Product> GetProducts();
+  Product? GetProduct(int productId);
+
+  Product AddProduct(Product product);
+
+  Product UpdateProduct(Product product);
+
+  Product DeleteProduct(int productId);
+}
+
+class ProductService : IProductService
+{
+  // Source of truth for products
+  private readonly List<Product> _products = [];
+
+  public Product? GetProduct(int productId)
+  {
+    return _products.FirstOrDefault(product => product.Id == productId);
+  }
+
+  public Product AddProduct(Product product)
+  {
+    _products.Add(product);
+    return product;
+  }
+
+  public List<Product> GetProducts()
+  {
+    return _products;
+  }
+
+  public Product UpdateProduct(Product product)
+  {
+    var existingProduct = GetProduct(product.Id);
+    if (existingProduct == null)
+    {
+      throw new KeyNotFoundException($"Product with ID {product.Id} not found.");
+    }
+
+    var updatedProduct = existingProduct with
+    {
+      Name = product.Name,
+      // Other properties
+    };
+
+    _products.Remove(existingProduct);
+    _products.Add(updatedProduct);
+    return updatedProduct;
+  }
+
+  public Product DeleteProduct(int productId)
+  {
+    var product = GetProduct(productId);
+    if (product == null)
+    {
+      throw new KeyNotFoundException($"Product with ID {productId} not found.");
+    }
+
+    _products.Remove(product);
+    return product;
+  }
+}
