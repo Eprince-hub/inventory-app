@@ -1,1 +1,15 @@
-GET http://localhost:5116
+
+GET http://localhost:5116/products
+
+###
+GET http://localhost:5116/products/4
+
+###
+POST http://localhost:5116/products
+content-type: application/json
+
+{
+  "name": "New Product",
+  "quantity": 100,
+  "DateTime": "2025-03-24"
+}
