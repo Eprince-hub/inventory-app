@@ -1,28 +1,28 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">InventoryApp.UI</a>
+﻿<div class="min-h-14 bg-black/40">
+    <div class="p-3">
+        <a class="text-[1.1rem] text-white" href="">InventoryApp.UI</a>
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<input type="checkbox" title="Navigation menu" class="appearance-none cursor-pointer w-14 h-10 text-white absolute top-2 right-4 border border-white/10 bg-[url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 30 30\'%3e%3cpath stroke=\'rgba%28255, 255, 255, 0.55%29\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' stroke-width=\'2\' d=\'M4 7h22M4 15h22M4 23h22\'/%3e%3c/svg%3e')] bg-no-repeat bg-center bg-[length:1.75rem] bg-white/10 md:hidden" />
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+<div class="hidden md:block md:h-[calc(100vh-3.5rem)] md:overflow-y-auto nav-scrollable">
+    <nav class="flex flex-col">
+        <div class="first:pt-4 pb-2 last:pb-4 px-3">
+            <NavLink class="flex items-center w-full h-12 text-[#d7d7d7] hover:bg-white/10 hover:text-white rounded px-4" href="" Match="NavLinkMatch.All">
+                <span class="inline-block relative w-5 h-5 mr-3 -mt-[1px] bi-house-door-fill-nav-menu bg-cover" aria-hidden="true"></span> Home
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+        <div class="first:pt-4 pb-2 last:pb-4 px-3">
+            <NavLink class="flex items-center w-full h-12 text-[#d7d7d7] hover:bg-white/10 hover:text-white rounded px-4" href="counter">
+                <span class="inline-block relative w-5 h-5 mr-3 -mt-[1px] bi-plus-square-fill-nav-menu bg-cover" aria-hidden="true"></span> Counter
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+        <div class="first:pt-4 pb-2 last:pb-4 px-3">
+            <NavLink class="flex items-center w-full h-12 text-[#d7d7d7] hover:bg-white/10 hover:text-white rounded px-4" href="weather">
+                <span class="inline-block relative w-5 h-5 mr-3 -mt-[1px] bi-list-nested-nav-menu bg-cover" aria-hidden="true"></span> Weather
             </NavLink>
         </div>
     </nav>
