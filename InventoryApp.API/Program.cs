@@ -27,4 +27,14 @@ app.MapPost("/products", (Product product, IProductService service) =>
   return TypedResults.Created($"/products/{newProduct.Id}", newProduct);
 }).AddEndpointFilter<ProductValidationFilter>();
 
+app.MapPut("/products/{id}", (Product product, int id, IProductService service) =>
+{
+  return service.UpdateProduct(product, id);
+});
+
+app.MapDelete("/products/{id}", (int id, IProductService service) =>
+{
+  var product = service.DeleteProduct(id);
+});
+
 app.Run();
