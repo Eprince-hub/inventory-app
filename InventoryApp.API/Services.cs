@@ -12,6 +12,7 @@ public interface IProductService
 
 class ProductService : IProductService
 {
+  // Source of truth for products
   private readonly List<Product> _products = [];
 
   public Product? GetProduct(int productId)
