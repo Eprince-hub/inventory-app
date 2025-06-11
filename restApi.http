@@ -1,11 +1,11 @@
 
-GET http://localhost:5116/products
+GET http://localhost:5116/api/products
 
 ###
-GET http://localhost:5116/products/2
+GET http://localhost:5116/api/products/2
 
 ###
-POST http://localhost:5116/products/create
+POST http://localhost:5116/api/products/create
 content-type: application/json
 
 {
