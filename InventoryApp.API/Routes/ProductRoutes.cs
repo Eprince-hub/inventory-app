@@ -5,7 +5,7 @@ public static class ProductRoutes
 {
   public static IEndpointRouteBuilder MapProductRoutes(this IEndpointRouteBuilder app)
   {
-    var productRouteGroup = app.MapGroup("/products");
+    var productRouteGroup = app.MapGroup("/api/products");
 
 
     productRouteGroup.MapGet("/", (IProductService service) => service.GetProducts());
