@@ -43,15 +43,17 @@ class ProductService : IProductService
       throw new KeyNotFoundException($"Product with ID {product.Id} not found.");
     }
 
-    var updatedProduct = existingProduct with
-    {
-      Name = product.Name,
-      // Other properties
-    };
+    // var updatedProduct = existingProduct with
+    // {
+    //   Name = product.Name,
+    //   // Other properties
+    // };
 
-    _products.Remove(existingProduct);
-    _products.Add(updatedProduct);
-    return updatedProduct;
+    existingProduct.Name = product.Name;
+
+    // _products.Remove(existingProduct);
+    // _products.Add(updatedProduct);
+    return existingProduct;
   }
 
   public Product DeleteProduct(int productId)
