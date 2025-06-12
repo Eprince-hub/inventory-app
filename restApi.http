@@ -9,7 +9,12 @@ POST http://localhost:5116/api/products/create
 content-type: application/json
 
 {
-  "name": "New Product",
+  "name": "NewProduct",
+  "sku": "NP-001",
   "quantity": 100,
-  "DateTime": "2025-03-24"
+  "categoryId": 1,
+  "costPrice": 50.00,
+  "sellingPrice": 75.00,
+  "isArchived": false,
+  "createdAt": "2025-03-24T12:00:00Z"
 }
