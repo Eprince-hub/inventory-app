@@ -18,23 +18,23 @@ public static class ProductRoutes
 
     productRouteGroup.MapPost("/create", (Product product, IProductService service) =>
     {
-      var newProduct = new Product
-      {
-        Id = service.GetProducts().Count + 1,
-        SKU = Guid.NewGuid().ToString(),
-        Name = product.Name,
-        Quantity = product.Quantity,
-        IsArchived = false, // Default value for new products
-        CreatedAt = DateTime.UtcNow, // Set the creation time to now
-        QRCodePath = product.QRCodePath,
-        ImagePath = product.ImagePath,
-        UnitOfMeasure = product.UnitOfMeasure,
-        Description = product.Description
-      };
+      // var newProduct = new Product
+      // {
+      //   Id = service.GetProducts().Count + 1,
+      //   SKU = Guid.NewGuid().ToString(),
+      //   Name = product.Name,
+      //   Quantity = product.Quantity,
+      //   IsArchived = false, // Default value for new products
+      //   CreatedAt = DateTime.UtcNow, // Set the creation time to now
+      //   QRCodePath = product.QRCodePath,
+      //   ImagePath = product.ImagePath,
+      //   UnitOfMeasure = product.UnitOfMeasure,
+      //   Description = product.Description
+      // };
       // var newProduct = product with { Id = service.GetProducts().Count + 1, SKU = Guid.NewGuid().ToString(), IsArchived = false };
 
-      service.AddProduct(newProduct);
-      return TypedResults.Created($"/products/{newProduct.Id}", newProduct);
+      service.AddProduct(product);
+      return TypedResults.Created($"/products/{product.Id}", product);
     }).AddEndpointFilter<ProductValidationFilter>();
 
     productRouteGroup.MapPut("/{id}", (Product product, int id, IProductService service) =>
