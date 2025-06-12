@@ -61,3 +61,6 @@ InventoryApp.UI/*/css/app.min.css
 # Temporary addition to be removed
 README.md
 zzzzzzzzzendpoints.md
+
+# Migration files are auto generated
+Migrations/
