@@ -31,4 +31,15 @@ public class InventoryDbContext : DbContext
   {
     optionsBuilder.UseNpgsql(configuration.GetConnectionString("InventoryDatabase"));
   }
+
+  // Create a method for seeding initial static data
+
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    modelBuilder.Entity<Category>().HasData(
+      new Category { Id = 1, Name = "Electronics", Description = "Devices and gadgets" },
+      new Category { Id = 2, Name = "Furniture", Description = "Home and office furniture" },
+      new Category { Id = 3, Name = "Clothing", Description = "Apparel and accessories" }
+    );
+  }
 }
