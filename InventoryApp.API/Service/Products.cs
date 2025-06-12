@@ -1,4 +1,5 @@
 
+using InventoryApp.API.Data;
 using InventoryApp.Shared;
 
 // Todo: Maybe not necessary as ProductService class can supplement
@@ -17,22 +18,32 @@ public interface IProductService
 class ProductService : IProductService
 {
   // Source of truth for products
-  private readonly List<Product> _products = [];
+  // In-memory data persistence for simplicity
+  // private readonly List<Product> _products = [];
 
-  public Product? GetProduct(int productId)
-  {
-    return _products.FirstOrDefault(product => product.Id == productId);
-  }
+  // Postgres database context
+  private readonly InventoryDbContext _db;
 
-  public Product AddProduct(Product product)
+  public ProductService(InventoryDbContext db)
   {
-    _products.Add(product);
-    return product;
+    _db = db;
   }
 
   public List<Product> GetProducts()
   {
-    return _products;
+    return _db.Products.ToList();
+  }
+
+  public Product? GetProduct(int productId)
+  {
+    return _db.Products.Find(productId);
+  }
+
+  public Product AddProduct(Product product)
+  {
+    _db.Products.Add(product);
+    _db.SaveChanges();
+    return product;
   }
 
   public Product UpdateProduct(Product product, int productId)
@@ -42,17 +53,10 @@ class ProductService : IProductService
     {
       throw new KeyNotFoundException($"Product with ID {product.Id} not found.");
     }
-
-    // var updatedProduct = existingProduct with
-    // {
-    //   Name = product.Name,
-    //   // Other properties
-    // };
-
     existingProduct.Name = product.Name;
+    existingProduct.Quantity = product.Quantity;
 
-    // _products.Remove(existingProduct);
-    // _products.Add(updatedProduct);
+    _db.SaveChanges();
     return existingProduct;
   }
 
@@ -64,7 +68,8 @@ class ProductService : IProductService
       throw new KeyNotFoundException($"Product with ID {productId} not found.");
     }
 
-    _products.Remove(product);
+    _db.Products.Remove(product);
+    _db.SaveChanges();
     return product;
   }
 }
