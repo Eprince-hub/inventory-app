@@ -6,10 +6,7 @@ namespace InventoryApp.API.Data;
 public class InventoryDbContext : DbContext
 {
 
-  private readonly IConfiguration configuration;
-
-
-  // public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) { }
+  public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) { }
 
   public DbSet<User> User { get; set; }
   public DbSet<Category> Categories { get; set; }
@@ -20,20 +17,7 @@ public class InventoryDbContext : DbContext
   public DbSet<StockAdjustment> StockAdjustments { get; set; }
   public DbSet<AuditLog> AuditLogs { get; set; }
 
-
-
-  public InventoryDbContext(IConfiguration configuration)
-  {
-    this.configuration = configuration;
-  }
-
-  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-  {
-    optionsBuilder.UseNpgsql(configuration.GetConnectionString("InventoryDatabase"));
-  }
-
   // Create a method for seeding initial static data
-
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     modelBuilder.Entity<Category>().HasData(
