@@ -9,7 +9,7 @@ POST http://localhost:5116/api/products/create
 content-type: application/json
 
 {
-  "name": "NewProduct",
+  "name": "New Product",
   "sku": "NP-001",
   "quantity": 100,
   "categoryId": 1,
