@@ -64,4 +64,4 @@ zzzzzzzzzendpoints.md
 
 # Migration files are auto generated
 Migrations/
-InventoryApp.API/appsettings.Development.json
+appsettings.Development.json
